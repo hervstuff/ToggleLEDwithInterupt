@@ -26,7 +26,7 @@ void main(void) {
 	 *TACCR0 has two modes. In compare mode, we use TA0CCR0 to hold a value which we will use to compare to the value in
 	 *Timer_A register TAR.
 	 *In capture mode, Timer_A register TAR is copied into the TACCR0 register.
-	 /Use MSP430x2xx Family User's Guide section 12 to understand the bit functions of timers.
+	 */Use MSP430x2xx Family User's Guide section 12 to understand the bit functions of timers.
 
 	TACCTL0 = 0x10;					// Enable counter interrupts, bit 4=1 or 1000 in binary
 	/*TACCTLx is the capture/compare control register and it holds 16 bits. The bit we are setting to high is the 
