@@ -15,7 +15,8 @@ void main(void) {
 	 *P1DIR is initially 00000000, when OR EQUALS with 00000001, the result is 00000001.
 	 *This means that Port 1.0 is set to output. The least significant bit is Port 1.0 and the most significant is Port 1.7.
 	 *To understand the pin functions, refer to the MIXED SIGNAL MICROCONTROLLER manual table 16 on port pin functions
-	 */which is what I am using to set up the direction of input/output.
+	 *which is what I am using to set up the direction of input/output.
+	 */
 	 
 	P1OUT &= ~BIT0; 			     	// Set the red LED on
          /*BIT0 is predefined as 00000001.
@@ -26,11 +27,13 @@ void main(void) {
 	 *TACCR0 has two modes. In compare mode, we use TA0CCR0 to hold a value which we will use to compare to the value in
 	 *Timer_A register TAR.
 	 *In capture mode, Timer_A register TAR is copied into the TACCR0 register.
-	 */Use MSP430x2xx Family User's Guide section 12 to understand the bit functions of timers.
+	 *Use MSP430x2xx Family User's Guide section 12 to understand the bit functions of timers.
+	 */
 
 	TACCTL0 = 0x10;					// Enable counter interrupts, bit 4=1 or 1000 in binary
 	/*TACCTLx is the capture/compare control register and it holds 16 bits. The bit we are setting to high is the 
-	 */capture/compare interrupt enable bit or CCIE which enables the interrupt request of the corresponding CCIFG flag.
+	 *capture/compare interrupt enable bit or CCIE which enables the interrupt request of the corresponding CCIFG flag.
+	 */
 
 	TACTL = TASSEL_1 + MC_1; 			// Timer A 0 with ACLK @ 12KHz, count UP
 	/*TACTL is the Timer_A control register and holds 16 bits.
@@ -41,7 +44,8 @@ void main(void) {
 	 *the telling the MC to set the mode to up mode and count towards TACCR0.
 	 *TASSEL_1 and MC_1 are predefined in the msp430g2553.h header file. The logic behind using "_0", "_1", "_2", "_3"
 	 *is that it allows us to shorthand "_0" as bits 00, "_1" bits 01, "_2" bits 10, "_3" bits 11.
-	 */If you were to use octal, MC_0 would be "0*0x10u", MC_1 would be "1*0x10u", etc; "u" means unsigned.
+	 *If you were to use octal, MC_0 would be "0*0x10u", MC_1 would be "1*0x10u", etc; "u" means unsigned.
+	 */
 
 	_BIS_SR(LPM0_bits + GIE); 	          // LPM0 (low power mode) with interrupts enabled
 }
