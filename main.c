@@ -18,9 +18,9 @@ void main(void) {
 	 */which is what I am using to set up the direction of input/output.
 	 
 	P1OUT &= ~BIT0; 			     	// Set the red LED on
-  /*BIT0 is predefined as 00000001.
+         /*BIT0 is predefined as 00000001.
 	 *The "~" operator infront of BIT0 means that "~BIT0" = 11111110.
-	 */P1OUT is "AND EQUALS to 11111110 which flips the digits again and makes it 00000001 and turns Port 1.0 into a output.
+	 *P1OUT is "AND EQUALS to 11111110 which flips the digits again and makes it 00000001 and turns Port 1.0 into a 	         */output.
 	TACCR0 = 6000;					// Count limit (16 bit)
 	/*TACCR0 is a 16 bit register meaning it can store a binary value of 1111 1111 1111 1111 or 32768 in decimal.
 	 *TACCR0 has two modes. In compare mode, we use TA0CCR0 to hold a value which we will use to compare to the value in
